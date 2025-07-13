@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Produtos/Monstruario.css">
+  <link rel="stylesheet" href="../Produtoss/Monstruario.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 <!--Fonte Montserrat Para Titulos-->
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
@@ -20,14 +20,16 @@
     <a href="carrinho.html" class="Icones">
       <i class="fas fa-shopping-cart"></i>
     </a>
-    <a href="login.html" class="Icones">
+    <a href="../../login.html" class="Icones">
       <i class="fa-solid fa-lock"></i>
     </a>
   </div>
 <!--// Imagem Logo -->
   <h1>
     <div class="h1-logo-container">
-      <img src="../PagInicial/Logo.png" alt="Logo Dona Flor" class="logo">
+      <a href="../../Escopo.html">
+      <img src="../../PagInicial/Logo.png" alt="Logo Dona Flor" class="logo">
+      </a>
     </div>
   </h1>
 <!--// Menus -->
@@ -38,17 +40,18 @@
       <li class="submenu">
         <a href="colecoes.html">Monstruario</a>
         <ul class="submenu-list">
-          <li><a href="aneis.html">Anéis</a></li>
-          <li><a href="brincos.html">Brincos</a></li>
-          <li><a href="colares.html">Colares</a></li>
-          <li><a href="pulseiras.html">Pulseiras</a></li>
+          <li><a href="Aneis.html">Anéis</a></li>
+          <li><a href="Brincos.html">Brincos</a></li>
+          <li><a href="Colares.html">Colares</a></li>
+          <li><a href="Pulseiras.html">Pulseiras</a></li>
         </ul>
       </li>
-      <li><a href="promocoes.html">Promoções</a></li>
-      <li><a href="sobre.html">Sobre nos</a></li>
-      <li><a href="duvida.html">Duvidas</a></li>
-      <li><a href="contato.html">Contatos</a></li>
-    </nav>
+      <li><a href="../../Promocoes.html">Promoções</a></li>
+      <li><a href="../../Sobre.html">Sobre nos</a></li>
+      <li><a href="../../Duvidas.html">Duvidas</a></li>
+      <li><a href="../../Contato.html">Contatos</a></li>
+    </ul>
+  </nav>
     </ul>
 
 <!--Parte das Semi Joias-->
@@ -270,5 +273,74 @@
 <!--Filtros por busca-->
 <script src="../filtro.javascript"></script>
 <!--Filtros por busca-->
+<script>
+document.querySelectorAll('.filtro-titulo').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const dropdown = this.parentElement;
+    dropdown.classList.toggle('open');
+    // Fecha outros dropdowns
+    document.querySelectorAll('.filtro-dropdown').forEach(other => {
+      if (other !== dropdown) other.classList.remove('open');
+    });
+  });
+});
+
+// Fecha o dropdown se clicar fora
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.filtro-dropdown')) {
+    document.querySelectorAll('.filtro-dropdown').forEach(drop => drop.classList.remove('open'));
+  }
+});
+</script>
+<script>
+const busca = document.getElementById('busca');
+const produtos = Array.from(document.querySelectorAll('.produto-card'));
+
+function getCheckedValues(classe) {
+  return Array.from(document.querySelectorAll('.' + classe + ':checked')).map(cb => cb.value);
+}
+
+function filtrarProdutos() {
+  const textoBusca = busca.value.toLowerCase();
+  const materiais = getCheckedValues('material-checkbox');
+  const corpecas = getCheckedValues('corpeca-checkbox');
+  const corpedras = getCheckedValues('corpedra-checkbox');
+  const tamanhos = getCheckedValues('tamanho-checkbox');
+  const colecoes = getCheckedValues('colecao-checkbox');
+  const promocoes = getCheckedValues('promocao-checkbox');
+  const disponibilidades = getCheckedValues('disponibilidade-checkbox');
+  const hipos = getCheckedValues('hipo-checkbox');
+  const banhos = getCheckedValues('banho-checkbox');
+
+  produtos.forEach(produto => {
+    const nome = produto.dataset.nome ? produto.dataset.nome.toLowerCase() : '';
+    const mostra =
+      (materiais.length === 0 || materiais.includes(produto.dataset.material)) &&
+      (corpecas.length === 0 || corpecas.includes(produto.dataset.corpeca)) &&
+      (corpedras.length === 0 || corpedras.includes(produto.dataset.corpedra)) &&
+      (tamanhos.length === 0 || tamanhos.includes(produto.dataset.tamanho)) &&
+      (colecoes.length === 0 || colecoes.includes(produto.dataset.colecao)) &&
+      (promocoes.length === 0 || promocoes.includes(produto.dataset.promocao)) &&
+      (disponibilidades.length === 0 || disponibilidades.includes(produto.dataset.disponibilidade)) &&
+      (hipos.length === 0 || hipos.includes(produto.dataset.hipo)) &&
+      (banhos.length === 0 || banhos.includes(produto.dataset.banho)) &&
+      nome.includes(textoBusca);
+
+    produto.style.display = mostra ? "block" : "none";
+  });
+}
+
+// Eventos
+document.querySelectorAll('.filtros-lateral input[type="checkbox"]').forEach(cb => cb.addEventListener('change', filtrarProdutos));
+busca.addEventListener('input', filtrarProdutos);
+document.getElementById('btn-resetar-filtros').addEventListener('click', function() {
+  document.getElementById('busca').value = '';
+  document.querySelectorAll('.filtros-lateral input[type="checkbox"]').forEach(cb => cb.checked = false);
+  filtrarProdutos();
+});
+
+// Inicializa
+filtrarProdutos();
+</script>
 </body>
 </html>
