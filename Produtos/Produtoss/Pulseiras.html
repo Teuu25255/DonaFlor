@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Produtoss/Monstruario.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+<!--Fonte Montserrat Para Titulos-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+<!--Fonte Lato para os TEXTOS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Pulseiras</title>
+</head>
+<body>
+<!--// Icones Parte superior direita -->
+      <div class="top-icons">
+    <a href="pesquisa.html" class="Icones">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+    <a href="carrinho.html" class="Icones">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+    <a href="../../login.html" class="Icones">
+      <i class="fa-solid fa-lock"></i>
+    </a>
+  </div>
+<!--// Imagem Logo -->
+  <h1>
+    <div class="h1-logo-container">
+      <a href="../../Escopo.html">
+      <img src="../../PagInicial/Logo.png" alt="Logo Dona Flor" class="logo">
+      </a>
+    </div>
+  </h1>
+<!--// Menus -->
+  <p></p>
+  <nav>
+    <ul>
+      <li><a href="novidades.html">Novidades</a></li>
+      <li class="submenu">
+        <a href="colecoes.html">Monstruario</a>
+        <ul class="submenu-list">
+          <li><a href="Aneis.html">Anéis</a></li>
+          <li><a href="Brincos.html">Brincos</a></li>
+          <li><a href="Colares.html">Colares</a></li>
+          <li><a href="Pulseiras.html">Pulseiras</a></li>
+        </ul>
+      </li>
+      <li><a href="Produtos/Promocoes/Promocoes.html">Promoções</a></li>
+      <li><a href="Produtos/Sobre/Sobre.html">Sobre nos</a></li>
+      <li><a href="Produtos/Duvida/Duvidas.html">Duvidas</a></li>
+      <li><a href="Produtos/Contato/Contato.html">Contatos</a></li>
+    </ul>
+  </nav>
+    </ul>
+
+<!--Parte das Semi Joias-->
+    <div class="titulo">
+      <p>Pulseiras</p>
+    </div>
+<!-- Parte dos Produtos em Grade -->
+  <div class="produtos-grid">
+  <div class="produto-card">
+    <img src="../PagInicial/Semi.jpeg" alt="Anel 1">
+    <p class="nome-produto">Anel Dourado</p>
+    <p class="preco-produto">R$ 59,90</p>
+  </div>
+  <div class="produto-card">
+    <img src="../PagInicial/Semii.jpeg" alt="Anel 2">
+    <p class="nome-produto">Anel Prata</p>
+    <p class="preco-produto">R$ 49,90</p>
+  </div>
+    <div class="produto-card">
+    <img src="../PagInicial/Semii.jpeg" alt="Anel 2">
+    <p class="nome-produto">Anel Prata</p>
+    <p class="preco-produto">R$ 49,90</p>
+  </div>
+    <div class="produto-card">
+    <img src="../PagInicial/Semii.jpeg" alt="Anel 2">
+    <p class="nome-produto">Anel Prata</p>
+    <p class="preco-produto">R$ 49,90</p>
+  </div>
+    <div class="produto-card">
+    <img src="../PagInicial/Semii.jpeg" alt="Anel 2">
+    <p class="nome-produto">Anel Prata</p>
+    <p class="preco-produto">R$ 49,90</p>
+  </div>
+    <div class="produto-card">
+    <img src="../PagInicial/Semii.jpeg" alt="Anel 2">
+    <p class="nome-produto">Anel Prata</p>
+    <p class="preco-produto">R$ 49,90</p>
+  </div>
+<!-- Adicione mais produtos -->
+  </div>
+<!-- Faixa que separa as semi joias do topo e do fim -->
+<div class="faixa-separadora"><span> <!--Aqui colocaria um texto da faixa separadora--></span></div>
+<!--// Parte final do site -->
+      <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Formas de Pagamento</h3>
+        <img src="..//PagInicial/pagamentos.png" alt="Formas de pagamento" style="max-width:150px;">
+      </div>
+      <div class="footer-info">
+        <h3>Segurança</h3>
+        <img src="..//PagInicial/seguro.png" alt="Site Seguro" style="max-width:80px;">
+        <p>Compra segura</p>
+      </div>
+      <div class="footer-info">
+        <h3>Contato</h3>
+        <p>Email: "matheussantana25255@gmail.com"</p>
+        <p>WhatsApp: "(31) 9 7303-3581"</p>
+      </div>
+      <div class="footer-info">
+        <h3>Acompanhe o nossas Redes Sociais</h3>
+        <i class="fa-brands fa-instagram"></i> 
+        <i class="fa-brands fa-facebook"></i>
+      </div>
+    </div>
+    <p style="text-align:center; color:#bfa76a; margin-top:10px;">&copy; 2025 Dona Flor Semijoias</p>
+  </footer>
+  <!--// Parte de Programação -->
+      <script>
+    // Mini menu Monstruario ao clicar
+    document.querySelectorAll('.submenu > a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const submenu = this.parentElement;
+        submenu.classList.toggle('open');
+        // Fecha outros submenus se houver
+        document.querySelectorAll('.submenu').forEach(function (other) {
+          if (other !== submenu) other.classList.remove('open');
+        });
+      });
+    });
+
+    // Fecha o submenu se clicar fora
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.submenu')) {
+        document.querySelectorAll('.submenu').forEach(function (submenu) {
+          submenu.classList.remove('open');
+        });
+      }
+    });
+    </script>
+</body>
+</html>
