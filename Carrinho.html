@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Visual.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+<!--Fonte Montserrat Para Titulos-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+<!--Fonte Lato para os TEXTOS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Sobre</title>
+</head>
+<body>
+<!--// Icones Parte superior direita -->
+      <div class="top-icons">
+    <a href="pesquisa.html" class="Icones">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+    <a href="Carrinho.html" class="Icones">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+  </div>
+<!--// Imagem Logo -->
+  <h1>
+    <div class="h1-logo-container">
+      <a href="Escopo.html">
+      <img src="../../PagInicial/Imagens/Imagens/Logo.png" alt="Logo Dona Flor" class="logo">
+      </a>
+    </div>
+  </h1>
+<!--// Menus -->
+  <p></p>
+  <nav>
+    <ul>
+      <li><a href="novidades.html">Novidades</a></li>
+      <li class="submenu">
+        <a href="colecoes.html">Monstruario</a>
+        <ul class="submenu-list">
+          <li><a href="Produtos/Produtoss/Aneis.html">Anéis</a></li>
+          <li><a href="Produtos/Produtoss/Brincos.html">Brincos</a></li>
+          <li><a href="Produtos/Produtoss/Colares.html">Colares</a></li>
+          <li><a href="Produtos/Produtoss/Pulseiras.html">Pulseiras</a></li>
+        </ul>
+      </li>
+      <li><a href="Produtos/Promocoes/Promocoes.html">Promoções</a></li>
+      <li><a href="Produtos/Sobre/Sobre.html">Sobre nos</a></li>
+      <li><a href="Produtos/Duvida/Duvidas.html">Duvidas</a></li>
+      <li><a href="Produtos/Contato/Contato.html">Contatos</a></li>
+    </ul>
+  </nav>
+    </ul>
+<!-- Inicio Codigo -->
+   <h1>Meu Carrinho</h1>
+  <div id="carrinho-itens"></div>
+  <div id="carrinho-total"></div>
+  <button onclick="window.location.href='Aneis.html'">Continuar comprando</button>
+  <button id="finalizar-compra">Finalizar compra</button>
+  <div id="calculo-frete" style="margin: 24px 0;">
+  <label for="cep">Calcule o frete:</label>
+  <input type="text" id="cep" maxlength="9" placeholder="Digite seu CEP" style="padding:6px;border-radius:6px;border:1px solid #ccc;">
+  <button id="btn-calcular-frete" style="background:#bfa76a;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;">Calcular</button>
+  <div id="frete-resultado" style="margin-top:8px;color:#bfa76a;"></div>
+</div>
+  <script>
+    function getCarrinho() {
+      return JSON.parse(localStorage.getItem('carrinho')) || [];
+    }
+    function salvarCarrinho(carrinho) {
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    }
+    function renderizarCarrinho() {
+      const carrinho = getCarrinho();
+      const container = document.getElementById('carrinho-itens');
+      const totalDiv = document.getElementById('carrinho-total');
+      container.innerHTML = '';
+      let total = 0;
+      if (carrinho.length === 0) {
+        container.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        totalDiv.innerHTML = '';
+        return;
+      }
+      carrinho.forEach((item, idx) => {
+        total += item.preco * item.qtd;
+        container.innerHTML += `
+          <div class="carrinho-item" style="border-bottom:1px solid #eee;padding:10px 0;display:flex;align-items:center;gap:16px;">
+            <img src="${item.img}" alt="${item.nome}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;">
+            <div style="flex:1;">
+              <strong>${item.nome}</strong><br>
+              Preço: R$ ${item.preco.toFixed(2).replace('.',',')}<br>
+              Quantidade: 
+              <button onclick="alterarQtd(${idx}, -1)">-</button>
+              <span>${item.qtd}</span>
+              <button onclick="alterarQtd(${idx}, 1)">+</button>
+              <button onclick="removerItem(${idx})" style="color:red;margin-left:10px;">Remover</button>
+            </div>
+            <div><strong>Subtotal:</strong> R$ ${(item.preco * item.qtd).toFixed(2).replace('.',',')}</div>
+          </div>
+        `;
+      });
+      totalDiv.innerHTML = `<h3>Total: R$ ${total.toFixed(2).replace('.',',')}</h3>`;
+    }
+    function alterarQtd(idx, delta) {
+      let carrinho = getCarrinho();
+      carrinho[idx].qtd += delta;
+      if (carrinho[idx].qtd <= 0) carrinho.splice(idx, 1);
+      if (carrinho[idx].qtd < 0) carrinho[idx].qtd = 0;
+      salvarCarrinho(carrinho);
+      renderizarCarrinho();
+    }
+    function removerItem(idx) {
+      let carrinho = getCarrinho();
+      carrinho.splice(idx, 1);
+      salvarCarrinho(carrinho);
+      renderizarCarrinho();
+    }
+    document.getElementById('finalizar-compra').onclick = function() {
+  let frete = window.valorFrete || 0;
+  // Calcula o total dos produtos
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  let totalProdutos = carrinho.reduce((soma, item) => soma + (item.preco * item.qtd), 0);
+  let totalFinal = totalProdutos + frete;
+  alert(
+    'Total dos produtos: R$ ' + totalProdutos.toFixed(2).replace('.',',') +
+    '\nFrete: R$ ' + frete.toFixed(2).replace('.',',') +
+    '\n\nTotal da compra: R$ ' + totalFinal.toFixed(2).replace('.',',')
+  );
+}
+    renderizarCarrinho();
+  </script>
+
+<!-- Estilo desta pagina sem usar o CSS do Visual.css -->
+<style>#carrinho-itens {
+  background: #fffbe9;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(191, 167, 106, 0.10), 0 1.5px 6px rgba(0,0,0,0.07);
+  padding: 24px 18px;
+  margin-bottom: 24px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carrinho-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 18px 0;
+  transition: background 0.2s;
+}
+.carrinho-item:last-child {
+  border-bottom: none;
+}
+.carrinho-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #bfa76a33;
+  background: #fff;
+}
+.carrinho-item strong {
+  color: #bfa76a;
+  font-size: 1.1em;
+}
+.carrinho-item button {
+  background: #bfa76a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 10px;
+  margin: 0 2px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+.carrinho-item button:hover {
+  background: #a48d4d;
+}
+.carrinho-item button[style*="color:red"] {
+  background: #fff;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+  margin-left: 10px;
+}
+.carrinho-item button[style*="color:red"]:hover {
+  background: #d9534f;
+  color: #fff;
+}
+#carrinho-total {
+  text-align: right;
+  font-size: 1.3em;
+  color: #bfa76a;
+  margin-bottom: 24px;
+  margin-right: 10%;
+}
+button#finalizar-compra, button[onclick*="Aneis.html"] {
+  background: #bfa76a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1.1em;
+  margin: 8px 4px 24px 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button#finalizar-compra:hover, button[onclick*="Aneis.html"]:hover {
+  background: #a48d4d;
+}</style>
+<!-- Fim do Codigo-->
+    <!-- Faixa que separa as semi joias do topo e do fim -->
+<div class="faixa-separadora"><span> <!--Aqui colocaria um texto da faixa separadora--></span></div>
+    <!--// Parte final do site -->
+      <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Formas de Pagamento</h3>
+        <img src="..//PagInicial/pagamentos.png" alt="Formas de pagamento" style="max-width:150px;">
+      </div>
+      <div class="footer-info">
+        <h3>Segurança</h3>
+        <img src="..//PagInicial/seguro.png" alt="Site Seguro" style="max-width:80px;">
+        <p>Compra segura</p>
+      </div>
+      <div class="footer-info">
+        <h3>Contato</h3>
+        <p>Email: "matheussantana25255@gmail.com"</p>
+        <p>WhatsApp: "(31) 9 7303-3581"</p>
+      </div>
+      <div class="footer-info">
+        <h3>Acompanhe o nossas Redes Sociais</h3>
+        <i class="fa-brands fa-instagram"></i> 
+        <i class="fa-brands fa-facebook"></i>
+      </div>
+    </div>
+    <p style="text-align:center; color:#bfa76a; margin-top:10px;">&copy; 2025 Dona Flor Semijoias</p>
+  </footer>
+  <!--// Parte de Programação -->
+      <script>
+    // Mini menu Monstruario ao clicar
+    document.querySelectorAll('.submenu > a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const submenu = this.parentElement;
+        submenu.classList.toggle('open');
+        // Fecha outros submenus se houver
+        document.querySelectorAll('.submenu').forEach(function (other) {
+          if (other !== submenu) other.classList.remove('open');
+        });
+      });
+    });
+
+    // Fecha o submenu se clicar fora
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.submenu')) {
+        document.querySelectorAll('.submenu').forEach(function (submenu) {
+          submenu.classList.remove('open');
+        });
+      }
+    });
+    </script>
+<script>
+document.getElementById('btn-calcular-frete').onclick = async function() {
+  const cep = document.getElementById('cep').value.replace(/\D/g, '');
+  const resultado = document.getElementById('frete-resultado');
+  if (cep.length !== 8) {
+    resultado.textContent = 'Digite um CEP válido!';
+    return;
+  }
+  resultado.textContent = 'Buscando...';
+  try {
+    // Busca endereço na API ViaCEP
+    const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await res.json();
+    if (data.erro) {
+      resultado.textContent = 'CEP não encontrado!';
+      return;
+    }
+    // Cálculo fictício de frete (exemplo: R$ 15,00 para Sudeste, R$ 25,00 para outros)
+    let frete = 25.00;
+    if (['MG','SP','RJ','ES'].includes(data.uf)) frete = 15.00;
+    resultado.innerHTML = `
+      <strong>Endereço:</strong> ${data.logradouro}, ${data.bairro}, ${data.localidade} - ${data.uf}<br>
+      <strong>Frete:</strong> R$ ${frete.toFixed(2).replace('.',',')}
+    `;
+    // Opcional: Salve o valor do frete para somar ao total na finalização
+    window.valorFrete = frete;
+  } catch (e) {
+    resultado.textContent = 'Erro ao buscar o CEP!';
+  }
+};
+</script>
+</body>
+</html>
