@@ -103,18 +103,19 @@ nav a:hover, nav a:focus {
     margin-right: 20px;
     margin-right: 20px auto; /* Espaço entre as imagens */
     max-width: 230px;
-    width: 230%;
     border-radius: 1px;
     box-shadow: 0px 2px 4px rgb(255, 255, 255);
+    height: auto;
 }
 
 .img2 {
     display: block;
     float: left;
     max-width: 230px;
-    width: 230px;
     border-radius: 1px;
     box-shadow: 0px 1px 5px rgb(255, 255, 255);
+        height: auto;
+
 }
 .quadro {
     float: left;
@@ -132,13 +133,15 @@ nav a:hover, nav a:focus {
 
 .quadro img {
     transition: transform 0.5s;
+    max-width: 100%; 
+    height: auto;
 }
 
 .quadro:hover img {
     transform: scale(1.1) rotate(0deg);
 }
 .container {
-    display: list-item;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
@@ -165,6 +168,8 @@ footer {
 }
 .footer-info img {
     margin: 8px 0;
+    max-width: 100%;
+    height: auto;
 }
 footer a {
     margin: 0 6px;
@@ -472,5 +477,337 @@ footer a {
         min-width: 240px;
         max-width: 240px;
         font-size: 1rem;
+    }
+}
+.instagram-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 40px auto;
+    position: relative;
+}
+
+.instagram-viewport {
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden !important;
+}
+
+/* linha do carrossel */
+.instagram-row {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* MINIATURAS CONTROLADAS */
+.insta-thumb {
+    width: 200px !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+/* GARANTIR QUE NADA GLOBAL ALTERE */
+.instagram-row img,
+img.insta-thumb {
+    width: 200px !important;
+    height: 200px !important;
+    max-width: 200px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+}
+
+
+/* BOTÕES */
+.instagram-btn {
+    background-color: #fff;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.instagram-btn:hover {
+    background-color: #f0f0f0;
+}
+/* ===========================
+    📱 CELULARES ATÉ 600px
+=========================== */
+@media (max-width: 600px) {
+
+    h1 {
+        /* Reduz o tamanho da fonte para mobile */
+        font-size: 22px; 
+        padding: 8px 10px;
+        /* Altera o layout para empilhar se necessário */
+        flex-wrap: wrap; 
+        gap: 8px;
+    }
+
+    .logo {
+        width: 70%; /* Reduz o logo para caber melhor */
+        max-width: 200px; /* Mantém um tamanho máximo razoável */
+    }
+
+    .top-icons {
+        /* Posiciona os ícones abaixo do h1 para não competir com o logo */
+        position: static; 
+        margin-top: 10px;
+        justify-content: center; /* Centraliza os ícones */
+        width: 100%;
+        gap: 15px;
+        padding-bottom: 10px; /* Adiciona um padding inferior */
+    }
+    .top-icons .Icones {
+        font-size: 24px; /* Reduz o tamanho dos ícones */
+        margin: 0; /* Remove margem extra */
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 8px; /* Reduz o espaçamento entre os itens do menu */
+        padding: 10px 0;
+        text-align: center; /* Centraliza o texto do menu */
+    }
+    nav a {
+        font-size: 16px; /* Reduz o tamanho da fonte do menu */
+        padding: 6px 10px;
+    }
+
+    .titulo {
+        font-size: 28px; /* Ajuste do título para mobile */
+        margin: 20px 0 16px 0;
+    }
+
+    .img1, .img2 {
+        max-width: 90%;
+        margin: 10px auto;
+        float: none;
+        display: block;
+        height: auto;
+    }
+
+    .quadro {
+        float: none;
+        margin: 10px auto;
+        width: 90%;
+        max-width: none;
+    }
+    
+    .quadro img {
+        max-width: 95%; /* Garante que a imagem do quadro se ajuste */
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .linha-carrossel {
+        flex-direction: column;
+        gap: 15px; /* Ajusta o espaçamento entre os elementos empilhados */
+        align-items: center;
+    }
+    
+    .carousel-centralizada {
+        width: 95%; /* Carrossel ocupa quase toda a largura */
+        max-width: 320px; /* Um limite para não ficar gigante em telas maiores que 600px mas menores que 900px (landscape) */
+    }
+
+    .carousel-images {
+        width: 100%;
+        height: 220px; /* Altura do carrossel principal no celular */
+    }
+
+    .carousel-item img {
+        max-height: 160px; /* Altura da imagem no carrossel */
+    }
+    .carousel-btn {
+        width: 35px; /* Botões menores */
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .imagem-lateral {
+        width: 95%; /* Imagens laterais ocupam quase toda a largura */
+        justify-content: center !important;
+        margin: 0;
+    }
+    .imagem-lateral img {
+        width: 90% !important; /* Ajuste do tamanho da imagem dentro do container */
+        max-width: 280px !important;
+    }
+
+    .depoimentos-carousel {
+        margin: 20px 0;
+    }
+    .depoimentos-viewport {
+        /* Foca em mostrar 1 depoimento por vez com margens decentes */
+        width: 90%; 
+        max-width: 350px; 
+    }
+    .depoimento {
+        min-width: 280px; /* Permite que o depoimento ocupe um bom espaço */
+        max-width: 95%; /* Garante flexibilidade */
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+
+    .depoimentos-list {
+        gap: 10px; /* Espaçamento reduzido entre depoimentos */
+    }
+    .depoimentos-btn {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+
+    .faixa-separadora {
+        font-size: 22px;
+        padding: 10px 0;
+        margin: 20px 0 15px 0;
+    }
+
+    .instagram-carousel {
+        margin: 20px auto;
+    }
+    .instagram-viewport {
+        max-width: 90%;
+    }
+    .insta-thumb {
+        /* Duas colunas em celulares */
+        width: calc(50% - 10px) !important;
+        height: auto !important;
+        max-width: none !important;
+    }
+
+    .footer-container {
+        gap: 20px; /* Reduz o gap entre os itens do footer */
+    }
+    .footer-info {
+        min-width: 140px; /* Reduz o min-width para caber melhor */
+        flex-basis: auto; /* Permite que os itens do footer se ajustem */
+    }
+    .footer-info h3 {
+        font-size: 1.1rem;
+    }
+    .footer-info p, .footer-info a {
+        font-size: 0.9rem;
+    }
+    .footer-info img {
+        max-width: 100px;
+    }
+}
+
+/* ===========================
+    📱 TABLETS 600px – 900px
+=========================== */
+@media (max-width: 900px) {
+
+    h1 {
+        font-size: 32px; /* Ajuste para tablets */
+    }
+    .logo {
+        width: 300px;
+    }
+    .top-icons {
+        top: 15px;
+        right: 15px;
+        gap: 18px;
+    }
+    .top-icons .Icones {
+        font-size: 26px;
+    }
+
+    nav ul {
+        gap: 20px;
+        flex-wrap: wrap; /* Permite que o menu quebre em duas linhas se a tela for pequena */
+    }
+    nav a {
+        font-size: 17px;
+    }
+
+    .titulo {
+        font-size: 32px;
+    }
+
+    .linha-carrossel {
+        gap: 20px;
+        /* Força a quebra para colunas se não houver espaço suficiente para 3 itens */
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    .imagem-lateral {
+        width: auto; /* Permite que as imagens laterais definam sua própria largura */
+        flex-basis: 250px; /* Largura base para cada imagem lateral */
+        justify-content: center !important;
+        margin: 0 10px; /* Adiciona um pouco de margem horizontal */
+    }
+    .imagem-lateral img {
+        width: 250px;
+        max-width: 100%;
+    }
+
+    .carousel-centralizada {
+        width: 90%;
+        max-width: 500px;
+    }
+    .carousel-images {
+        width: 100%;
+        height: 250px;
+    }
+    .carousel-item img {
+        max-height: 180px;
+    }
+
+    .depoimentos-viewport {
+        width: 90%; /* Ocupa 90% da largura em tablets */
+        max-width: 650px; /* Permite mostrar 2 depoimentos */
+    }
+    .depoimento {
+        min-width: 280px;
+        max-width: 280px;
+    }
+    
+    .instagram-viewport {
+        max-width: 700px;
+    }
+    .insta-thumb {
+        width: calc(33.33% - 14px) !important;
+        height: auto !important;
+    }
+
+    .footer-container {
+        gap: 30px;
+    }
+    .footer-info {
+        min-width: 160px;
+    }
+}
+
+/* ===========================
+    💻 NOTEBOOKS MÉDIOS 900–1200px
+=========================== */
+@media (max-width: 1200px) {
+
+    .imagem-lateral img {
+        width: 280px;
+    }
+
+    .carousel {
+        max-width: 500px;
+    }
+
+    .depoimentos-viewport {
+        width: 840px;
+    }
+    
+    .depoimento {
+        max-width: 250px;
+        min-width: 250px;
     }
 }
