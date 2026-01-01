@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carrinho de compras da DonaFlor - Revise seus produtos, calcule frete e finalize sua compra de semi joias com segurança.">
+  <meta name="keywords" content="carrinho, compras, semi joias, frete, pagamento, DonaFlor">
   <link rel="stylesheet" href="Visual.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 <!--Fonte Montserrat Para Titulos-->
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
 <!--Fonte Lato para os TEXTOS-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <title>Sobre</title>
+  <title>Carrinho - DonaFlor Semi Joias</title>
 </head>
 <body>
 <!--// Icones Parte superior direita -->
@@ -52,10 +54,15 @@
     </ul>
 <!-- Inicio Codigo -->
    <h1>Meu Carrinho</h1>
-  <div id="carrinho-itens"></div>
+  <div id="carrinho-itens">   <div id="lista-carrinho"></div>
+  <h3>Total: <span id="total-geral">R$ 0,00</span></h3></div>
   <div id="carrinho-total"></div>
   <button onclick="window.location.href='Aneis.html'">Continuar comprando</button>
-  <button id="finalizar-compra">Finalizar compra</button>
+  <button id='finalizar-compra'>Finalizar compra</button>
+
+  <h2>Lista de Desejos</h2>
+  <div id="wishlist-container" style="border:1px solid #eee; padding:10px; margin:20px 0;"></div>
+
   <div id="calculo-frete" style="margin: 24px 0;">
   <label for="cep">Calcule o frete:</label>
   <input type="text" id="cep" maxlength="9" placeholder="Digite seu CEP" style="padding:6px;border-radius:6px;border:1px solid #ccc;">
@@ -114,19 +121,70 @@
       salvarCarrinho(carrinho);
       renderizarCarrinho();
     }
-    document.getElementById('finalizar-compra').onclick = function() {
-  let frete = window.valorFrete || 0;
+   // document.getElementById('finalizar-compra').onclick = function() {
+  //let frete = window.valorFrete || 0;
   // Calcula o total dos produtos
-  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  let totalProdutos = carrinho.reduce((soma, item) => soma + (item.preco * item.qtd), 0);
-  let totalFinal = totalProdutos + frete;
-  alert(
-    'Total dos produtos: R$ ' + totalProdutos.toFixed(2).replace('.',',') +
-    '\nFrete: R$ ' + frete.toFixed(2).replace('.',',') +
-    '\n\nTotal da compra: R$ ' + totalFinal.toFixed(2).replace('.',',')
-  );
-}
-    renderizarCarrinho();
+  //let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  //let totalProdutos = carrinho.reduce((soma, item) => soma + (item.preco * item.qtd), 0);
+  //let totalFinal = totalProdutos + frete;
+  //alert(
+    //'Total dos produtos: R$ ' + totalProdutos.toFixed(2).replace('.',',') +
+    //'\nFrete: R$ ' + frete.toFixed(2).replace('.',',') +
+    //'\n\nTotal da compra: R$ ' + totalFinal.toFixed(2).replace('.',',')
+  //);
+    //}
+document.getElementById('finalizar-compra').onclick = async function() {
+
+    let frete = window.valorFrete || 0;
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio.");
+        return;
+    }
+
+    // Converte o carrinho para o formato da InfinitePay
+    let itensAPI = carrinho.map(item => ({
+        quantity: item.qtd,
+        price: Math.round(item.preco * 100), // converte para centavos
+        description: item.nome
+    }));
+
+    // Adiciona o frete como item, se existir
+    if (frete > 0) {
+        itensAPI.push({
+            quantity: 1,
+            price: Math.round(frete * 100),
+            description: "Frete"
+        });
+    }
+
+    const pedido = {
+        order_nsu: "PEDIDO-" + Date.now(),
+        items: itensAPI
+    };
+
+    // Envia para o backend PHP que conecta com a InfinitePay
+let response = await fetch("../../gerar_link.php", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(pedido)
+});
+
+    let data = await response.json();
+
+    if (data.url) {
+        // Redireciona para o checkout da InfinitePay
+        window.location.href = data.url;
+    } else {
+        console.error("Erro:", data);
+        alert("Erro ao gerar pagamento. Tente novamente.");
+    }
+};
+</script>
+
   </script>
 
 <!-- Estilo desta pagina sem usar o CSS do Visual.css -->
@@ -292,5 +350,98 @@ document.getElementById('btn-calcular-frete').onclick = async function() {
   }
 };
 </script>
+<script>
+// Recupera carrinho
+function getCarrinho() {
+  try {
+    return JSON.parse(localStorage.getItem("carrinho")) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+// Salva carrinho
+function salvarCarrinho(carrinho) {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho));
+}
+
+// Renderiza os itens na tela
+function renderizarCarrinho() {
+  const container = document.getElementById("lista-carrinho");
+  const totalGeral = document.getElementById("total-geral");
+
+  const carrinho = getCarrinho();
+
+  if (carrinho.length === 0) {
+    container.innerHTML = "<p>Seu carrinho está vazio.</p>";
+    totalGeral.textContent = "R$ 0,00";
+    return;
+  }
+
+  container.innerHTML = "";
+
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    total += item.preco * item.qtd;
+
+    const div = document.createElement("div");
+    div.classList.add("item-carrinho");
+
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.nome}" class="img-carrinho">
+
+      <div class="info-carrinho">
+        <h3>${item.nome}</h3>
+        <p>Preço: R$ ${item.preco.toFixed(2)}</p>
+        <p>Quantidade: 
+          <button onclick="alterarQtd(${index}, -1)">-</button>
+          ${item.qtd}
+          <button onclick="alterarQtd(${index}, 1)">+</button>
+        </p>
+        <button class="remover-btn" onclick="removerItem(${index})">Remover</button>
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
+
+  totalGeral.textContent = "R$ " + total.toFixed(2).replace('.', ',');
+}
+
+// Alterar quantidade
+function alterarQtd(index, delta) {
+  const carrinho = getCarrinho();
+
+  carrinho[index].qtd += delta;
+
+  if (carrinho[index].qtd <= 0) {
+    carrinho.splice(index, 1);
+  }
+
+  salvarCarrinho(carrinho);
+  renderizarCarrinho();
+}
+
+// Remover item
+function removerItem(index) {
+  const carrinho = getCarrinho();
+  carrinho.splice(index, 1);
+  salvarCarrinho(carrinho);
+  renderizarCarrinho();
+}
+
+// Ao carregar a página
+renderizarCarrinho();
+</script>
+
+<script src="wishlist.js"></script>
+<script>
+// Renderizar wishlist se houver container
+if (document.getElementById('wishlist-container')) {
+  renderizarWishlist();
+}
+</script>
+
 </body>
 </html>

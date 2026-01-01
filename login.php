@@ -2,38 +2,45 @@
 session_start();
 include "conexao.php";
 
+// Regenerar session ID para segurança
+session_regenerate_id(true);
+
 // Se formulário enviado
 $msg = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
 
-    // Verifica se o email existe
-    $sql = "SELECT id, nome, senha FROM usuarios WHERE email = ?";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $resultado = $stmt->get_result();
-
-    if ($resultado->num_rows === 1) {
-        $usuario = $resultado->fetch_assoc();
-
-        // Verifica a senha
-        if (password_verify($senha, $usuario["senha"])) {
-
-            // Criar sessão
-            $_SESSION["usuario_id"]   = $usuario["id"];
-            $_SESSION["usuario_nome"] = $usuario["nome"];
-            $_SESSION["logado"]       = true;
-
-            header("Location: painel.php"); // página protegida
-            exit;
-        } else {
-            $msg = "Senha incorreta.";
-        }
+    if (!$email || !$senha) {
+        $msg = "Dados inválidos.";
     } else {
-        $msg = "Usuário não encontrado.";
+        // Verifica se o email existe
+        $sql = "SELECT id, nome, senha FROM usuarios WHERE email = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        if ($resultado->num_rows === 1) {
+            $usuario = $resultado->fetch_assoc();
+
+            // Verifica a senha
+            if (password_verify($senha, $usuario["senha"])) {
+
+                // Criar sessão
+                $_SESSION["usuario_id"]   = $usuario["id"];
+                $_SESSION["usuario_nome"] = $usuario["nome"];
+                $_SESSION["logado"]       = true;
+
+                header("Location: painel.php"); // página protegida
+                exit;
+            } else {
+                $msg = "Senha incorreta.";
+            }
+        } else {
+            $msg = "Usuário não encontrado.";
+        }
     }
 }
 ?>

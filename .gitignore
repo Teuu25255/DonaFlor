@@ -1,0 +1,20 @@
+# Arquivos de configuração sensíveis
+config.php
+
+# Logs
+*.log
+
+# Diretórios temporários
+tmp/
+temp/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Node modules (se usar no futuro)
+node_modules/
+
+# Arquivos de backup
+*.bak
+*.swp

@@ -1,8 +1,5 @@
 <?php
-$host = "localhost";
-$usuario = "donaflor_MatheusAdmin";
-$senha = "Im%1wk99+-vz}^9Y";
-$banco = "donaflor_semijoias";
+include "config.php";
 
 $con = new mysqli($host, $usuario, $senha, $banco);
 

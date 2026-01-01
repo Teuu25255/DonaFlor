@@ -30,11 +30,34 @@ Nosso catálogo conta com:
 
 - HTML5
 - CSS3
-- JavaScript
+- JavaScript (ES6+)
+- PHP 7+
+- MySQL
+- InfinitePay (para pagamentos)
 
-## 🤝 Contribuição
+## 📁 Estrutura do Projeto
 
-Atualmente este projeto não está aberto para contribuições externas. Mas sugestões são sempre bem-vindas! ✨
+- `index.html`: Página inicial
+- `Carrinho.html`: Página do carrinho de compras
+- `login.php`: Sistema de autenticação
+- `conexao.php`: Conexão com banco de dados
+- `config.php`: Configurações seguras (não commitar)
+- `wishlist.js`: Gerenciamento de lista de desejos
+- `Visual.css`: Estilos principais
+- `Menus/`: Páginas de produtos e seções
+
+## 🚀 Como executar
+
+1. Configure um servidor PHP (ex.: XAMPP, WAMP).
+2. Importe o banco de dados MySQL.
+3. Atualize `config.php` com suas credenciais.
+4. Acesse `index.html` no navegador.
+
+## 🔒 Segurança
+
+- Credenciais em `config.php` (adicione ao .gitignore).
+- Validação de entrada em formulários.
+- Sessões regeneradas para prevenir hijacking.
 
 ## 📜 Licença
 

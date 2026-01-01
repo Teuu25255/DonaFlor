@@ -811,3 +811,38 @@ img.insta-thumb {
         min-width: 250px;
     }
 }
+
+/* Media queries adicionais para melhor responsividade */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+        padding: 8px 12px;
+    }
+    
+    .logo {
+        width: 250px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav li {
+        width: 100%;
+    }
+    
+    .top-icons {
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 320px) {
+    h1 {
+        font-size: 20px;
+    }
+    
+    .logo {
+        width: 200px;
+    }
+}
