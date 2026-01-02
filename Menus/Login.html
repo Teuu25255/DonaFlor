@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../Visual.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+<!--Fonte Montserrat Para Titulos-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+<!--Fonte Lato para os TEXTOS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Login - DonaFlor Semi Joias</title>
+</head>
+<body>
+<!--// Icones Parte superior direita -->
+      <div class="top-icons">
+    <a href="Pesquisa.html" class="Icones">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+<!-- No ícone do carrinho, adicione o span para o contador -->
+<a href="Menus/Carrinho.html" class="Icones" style="position:relative;">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="carrinho-contador" style="position:absolute;top:-8px;right:-8px;background:#bfa76a;color:#fff;padding:2px 7px;border-radius:50%;font-size:12px;min-width:18px;text-align:center;display:none;">0</span>
+</a>
+  </div>
+<!--// Imagem Logo -->
+  <h1>
+    <div class="h1-logo-container">
+      <a href="/../index.html">
+      <img src="../Imagens/LogoSite.png" alt="Logo Dona Flor" class="logo">
+      </a>
+    </div>
+  </h1>
+<!--// Menus -->
+  <p></p>
+  <nav>
+    <ul>
+      <li><a href="novidades.html">Novidades</a></li>
+      <li class="submenu">
+        <a href="colecoes.html">Monstruario</a>
+        <ul class="submenu-list">
+          <li><a href="/Menus/SemiJoias/Aneis.html">Anéis</a></li>
+          <li><a href="/Menus/SemiJoias/Brincos.html">Brincos</a></li>
+          <li><a href="/Menus/SemiJoias/Colares.html">Colares</a></li>
+          <li><a href="/Menus/SemiJoias/Pulseiras.html">Pulseiras</a></li>
+        </ul>
+      </li>
+      <li><a href="/Menus/Promocoes.html">Promoções</a></li>
+      <li><a href="/Menus/Sobre.html">Sobre nos</a></li>
+      <li><a href="/Menus/Duvidas.html">Duvidas</a></li>
+      <li><a href="/Menus/Contato.html">Contatos</a></li>
+    </ul>
+  </nav>
+    </ul>
+<!-- Inicio Codigo -->
+
+
+<div class="login-container">
+  <div class="CaixaLogin">
+    <h2>Entrar</h2>
+    <form action="Login.php" method="POST">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+      <button type="submit">Entrar</button>
+      <a href="esqueci_senha.php" class="esqueceu-senha">Esqueceu a senha?</a>
+    </form>
+  </div>
+  <div class="divisoria">|</div>
+  <div class="CaixaRegistrar">
+    <h2>Registrar</h2>
+    <form action="registrar.php" method="POST">
+      <label for="nome">Nome Completo</label>
+      <input type="text" id="name" name="name" placeholder="Digite seu Nome Completo" required>
+      <label for="email-reg">E-mail</label>
+      <input type="email" id="email-reg" name="email-reg" placeholder="Digite seu e-mail" required>
+      <label for="senha-reg">Senha</label>
+      <input type="password" id="senha-reg" name="senha-reg" placeholder="Digite sua senha" required>
+      <ul class="requisitos-senha" id="requisitos-senha">
+        <li id="req-tamanho">Mínimo 8 caracteres</li>
+        <li id="req-maiuscula">Pelo menos 1 letra maiúscula</li>
+        <li id="req-minuscula">Pelo menos 1 letra minúscula</li>
+        <li id="req-numero">Pelo menos 1 número</li>
+        <li id="req-especial">Pelo menos 1 caractere especial</li>
+      </ul>
+      <label for="senha-conf">Confirmar Senha</label>
+      <input type="password" id="senha-conf" name="senha-conf" placeholder="Digite sua senha" required>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="termos" name="termos" required>
+        <label for="termos">Aceito os <a href="/Politicas/Privacidade.html">termos de política de privacidade</a> e <a href="/Politicas/Uso.html">política de uso</a> *</label>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="emails" name="emails">
+        <label for="emails">Autorizo o envio de emails com novidades da loja e outras informações</label>
+      </div>
+
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+</div>
+<!-- Estilo desta pagina sem usar o CSS do Visual.css -->
+<style>.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  margin: 40px auto 32px auto;
+  max-width: 800px;
+  min-height: 420px;
+}
+
+.CaixaLogin, .CaixaRegistrar {
+  flex: 1;
+  max-width: 350px;
+  background: #fffbe6;
+  border: 2px solid #bfa76a;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(191, 167, 106, 0.10);
+  padding: 32px 28px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.CaixaLogin h2, .CaixaRegistrar h2 {
+  color: #bfa76a;
+  margin-bottom: 18px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.CaixaLogin form, .CaixaRegistrar form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.CaixaLogin label, .CaixaRegistrar label {
+  font-size: 1rem;
+  color: #3d2c13;
+  margin-bottom: 2px;
+}
+
+.CaixaLogin input[type="email"],
+.CaixaLogin input[type="password"],
+.CaixaRegistrar input[type="text"],
+.CaixaRegistrar input[type="email"],
+.CaixaRegistrar input[type="password"] {
+  padding: 10px;
+  border: 1.5px solid #bfa76a;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: #3d2c13;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.CaixaLogin input:focus,
+.CaixaRegistrar input:focus {
+  border-color: #7a5c1b;
+}
+
+.CaixaLogin button,
+.CaixaRegistrar button {
+  margin-top: 10px;
+  padding: 10px 0;
+  background: #bfa76a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.CaixaLogin button:hover,
+.CaixaRegistrar button:hover {
+  background: #7a5c1b;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-top: 2px;
+  accent-color: #bfa76a;
+}
+
+.checkbox-group label {
+  font-size: 0.9rem;
+  color: #3d2c13;
+  line-height: 1.4;
+}
+
+.checkbox-group label a {
+  color: #bfa76a;
+  text-decoration: none;
+}
+
+.checkbox-group label a:hover {
+  text-decoration: underline;
+}
+
+.esqueceu-senha,
+.Ja-tem-conta {
+  display: block;
+  margin-top: 10px;
+  text-align: right;
+  color: #bfa76a;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.esqueceu-senha:hover,
+.Ja-tem-conta:hover {
+  color: #7a5c1b;
+  text-decoration: underline;
+}
+
+.divisoria {
+  width: 3px;
+  height: 90%;
+  background: #bfa76a;
+  margin: 0 100px;
+  border-radius: 2px;
+  min-height: 500px;
+  align-self: center;
+  /* Remove o texto "|" */
+  font-size: 0;
+  color: transparent;
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .login-container {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 95vw;
+  }
+  .divisoria {
+    display: none;
+  }
+  .CaixaLogin, .CaixaRegistrar {
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+  .requisitos-senha {
+  margin: 6px 0 12px 0;
+  padding-left: 18px;
+  font-size: 0.95rem;
+  color: #bfa76a;
+  list-style: disc;
+}
+.requisitos-senha li {
+  margin-bottom: 2px;
+  transition: color 0.2s;
+}
+.requisitos-senha li.ok {
+  color: #4caf50;
+  font-weight: bold;
+}
+}</style>
+<!-- Fim do Codigo-->
+    <!-- Faixa que separa as semi joias do topo e do fim -->
+<div class="faixa-separadora"><span> <!--Aqui colocaria um texto da faixa separadora--></span></div>
+    <!-- Rodape do site -->
+    <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Formas de Pagamento</h3>
+        <img src="/../Imagens/FormasPagamentoRodape.png" alt="Formas de pagamento" style="max-width:200px;">
+      </div>
+      <div class="footer-info">
+        <h3>Segurança</h3>
+        <img src="/../Imagens/SeguroGoogleRodape.png" alt="Site Seguro" style="max-width:80px;">
+        <p>Compra segura</p>
+      </div>
+      <div class="footer-info">
+        <h3>Contatos</h3>
+        <p>Email: <a href="mailto:donaflorsemijoiass@gmail.com">Donaflorsemijoiass@gmail.com <i class="fa-solid fa-envelope"></i></a></p>
+        <p>WhatsApp DonaFlor:<a href="https://wa.me/5531973355820?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido.">+55 (31) 97335-5820 <i class="fa-brands fa-whatsapp"></i></p></a>
+      </div>
+      <div class="footer-info">
+        <h3>Acompanhe o nosso Instagram</h3>
+        <a href="https://www.instagram.com/d.flor_semijoias/">d.flor_semijoias <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <p style="text-align:center; color:#bfa76a; margin-top:10px;">&copy; 2026 Dona Flor Semijoias</p>
+  </footer>
+  <!-- Fim do rodape -->
+
+  <!--// Parte de Programação -->
+      <script>
+    // Mini menu Monstruario ao clicar
+    document.querySelectorAll('.submenu > a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const submenu = this.parentElement;
+        submenu.classList.toggle('open');
+        // Fecha outros submenus se houver
+        document.querySelectorAll('.submenu').forEach(function (other) {
+          if (other !== submenu) other.classList.remove('open');
+        });
+      });
+    });
+
+    // Fecha o submenu se clicar fora
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.submenu')) {
+        document.querySelectorAll('.submenu').forEach(function (submenu) {
+          submenu.classList.remove('open');
+        });
+      }
+    });
+    </script>
+<script>
+// filepath: c:\Users\Matheus\Desktop\loja\Login.html
+document.querySelector('.CaixaRegistrar form').addEventListener('submit', function(e) {
+  const senha = document.getElementById('senha-reg').value;
+  const senhaConf = document.getElementById('senha-conf').value;
+  const termos = document.getElementById('termos').checked;
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+  if (!regex.test(senha)) {
+    alert('A senha deve ter pelo menos 8 caracteres, incluindo maiúscula, minúscula, número e caractere especial.');
+    e.preventDefault();
+    return;
+  }
+  if (senha !== senhaConf) {
+    alert('As senhas não coincidem.');
+    e.preventDefault();
+    return;
+  }
+  if (!termos) {
+    alert('Você deve aceitar os termos de política de privacidade e política de uso para se registrar.');
+    e.preventDefault();
+    return;
+  }
+});
+</script>
+<script>
+// filepath: c:\Users\Matheus\Desktop\loja\Login.html
+const senhaInput = document.getElementById('senha-reg');
+senhaInput.addEventListener('input', function() {
+  const senha = senhaInput.value;
+  // Regras
+  document.getElementById('req-tamanho').classList.toggle('ok', senha.length >= 8);
+  document.getElementById('req-maiuscula').classList.toggle('ok', /[A-Z]/.test(senha));
+  document.getElementById('req-minuscula').classList.toggle('ok', /[a-z]/.test(senha));
+  document.getElementById('req-numero').classList.toggle('ok', /\d/.test(senha));
+  document.getElementById('req-especial').classList.toggle('ok', /[\W_]/.test(senha));
+});
+</script>
+<script>
+// Funções compartilhadas do carrinho
+function getCarrinho() {
+  return JSON.parse(localStorage.getItem('carrinho')) || [];
+}
+
+function salvarCarrinho(carrinho) {
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+function atualizarContadorCarrinho() {
+  const carrinho = getCarrinho();
+  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+  const contador = document.getElementById('carrinho-contador');
+  if (contador) {
+    contador.textContent = totalItens;
+    contador.style.display = totalItens > 0 ? 'inline-block' : 'none';
+  }
+}
+
+// Atualiza contador ao carregar a página
+document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
+</script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/css/Monstruario.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Pulseira</title>
+</head>
+<body>
+  <!-- 3 icones de pesquisa - carrinho - login -->
+  <div class="top-icons">
+    <a href="../Pesquisa.html" class="Icones"><i class="fa-solid fa-magnifying-glass"></i></a>
+    <a href="../Carrinho.html" class="Icones" style="position:relative;">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="carrinho-contador" style="position:absolute;top:-8px;right:-8px;background:#bfa76a;color:#fff;padding:2px 7px;border-radius:50%;font-size:12px;min-width:18px;text-align:center;display:none;">0</span>
+    </a>
+    <a href="../Login.html" class="Icones"><i class="fa-solid fa-lock"></i></a>
+  </div>
+
+  <!-- Logo do site -->
+  <h1>
+    <div class="h1-logo-container">
+      <a href="/../index.html">
+        <img src="/Imagens/LogoSite.png" alt="Logo Dona Flor" class="logo">
+      </a>
+    </div>
+  </h1>
+
+  <!-- Menus de navegação do site -->
+  <nav>
+    <ul>
+      <li><a href="../Novidades.html">Novidades</a></li>
+      <li class="submenu">
+        <a href="../Produtos.html">Monstruario</a>
+        <ul class="submenu-list">
+          <li><a href="../SemiJoias/Aneis.html">Anéis</a></li>
+          <li><a href="../SemiJoias/Brincos.html">Brincos</a></li>
+          <li><a href="../SemiJoias/Colares.html">Colares</a></li>
+          <li><a href="../SemiJoias/Pulseiras.html">Pulseiras</a></li>
+        </ul>
+      </li>
+      <li><a href="../Promocoes.html">Promoções</a></li>
+      <li><a href="../Sobre.html">Sobre nos</a></li>
+      <li><a href="../Duvidas.html">Duvidas</a></li>
+      <li><a href="../Contato.html">Contatos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Título da página -->
+  <div class="titulo"><p>Pulseira</p></div>
+
+<!-- Filtros laterais para pequiasr-->
+  <div class="pagina-produtos">
+    <aside class="filtros-lateral">
+      <div class="campo-busca">
+        <input type="text" id="busca" placeholder="🔍 Procurar por nome...">
+      </div>
+
+      <div class="filtro-dropdown">
+        <button class="filtro-titulo">Material <span class="seta">&#9662;</span></button>
+        <div class="filtro-opcoes">
+          <label><input type="checkbox" value="ouro" class="material-checkbox"> Ouro</label>
+          <label><input type="checkbox" value="prata" class="material-checkbox"> Prata</label>
+          <label><input type="checkbox" value="folheado" class="material-checkbox"> Outro</label>
+        </div>
+      </div>
+
+      <div class="filtro-dropdown">
+        <button class="filtro-titulo">Cor da peça <span class="seta">&#9662;</span></button>
+        <div class="filtro-opcoes">
+          <label><input type="checkbox" value="dourado" class="corpeca-checkbox"> Dourado</label>
+          <label><input type="checkbox" value="prateado" class="corpeca-checkbox"> Prateado</label>
+          <label><input type="checkbox" value="rose" class="corpeca-checkbox"> Rosé</label>
+          <label><input type="checkbox" value="preto" class="corpeca-checkbox"> Preto</label>
+          <label><input type="checkbox" value="outro" class="corpeca-checkbox"> Outro</label>
+        </div>
+      </div>
+
+      <div class="filtro-dropdown">
+        <button class="filtro-titulo">Cor da pedra <span class="seta">&#9662;</span></button>
+        <div class="filtro-opcoes">
+          <label><input type="checkbox" value="branco" class="corpedra-checkbox"> Branco</label>
+          <label><input type="checkbox" value="azul" class="corpedra-checkbox"> Azul</label>
+          <label><input type="checkbox" value="verde" class="corpedra-checkbox"> Verde</label>
+          <label><input type="checkbox" value="vermelho" class="corpedra-checkbox"> Vermelho</label>
+          <label><input type="checkbox" value="rosa" class="corpedra-checkbox"> Rosa</label>
+          <label><input type="checkbox" value="sem-pedra" class="corpedra-checkbox"> Outro</label>
+        </div>
+      </div>
+
+      <div class="filtro-dropdown">
+        <button class="filtro-titulo">Tamanho <span class="seta">&#9662;</span></button>
+        <div class="filtro-opcoes">
+          <label><input type="checkbox" value="pequeno" class="tamanho-checkbox"> Pequeno</label>
+          <label><input type="checkbox" value="medio" class="tamanho-checkbox"> Médio</label>
+          <label><input type="checkbox" value="grande" class="tamanho-checkbox"> Grande</label>
+          <label><input type="checkbox" value="ajustavel" class="tamanho-checkbox"> Ajustável</label>
+        </div>
+      </div>
+
+      <div class="filtro-dropdown">
+        <button class="filtro-titulo">Promoção <span class="seta">&#9662;</span></button>
+        <div class="filtro-opcoes">
+          <label><input type="checkbox" value="promocao" class="promocao-checkbox"> Em promoção</label>
+          <label><input type="checkbox" value="novidade" class="promocao-checkbox"> Novidades</label>
+        </div>
+      </div>
+
+      <div class="filtro-dropdown">
+        <button class="filtro-titulo">Disponibilidade <span class="seta">&#9662;</span></button>
+        <div class="filtro-opcoes">
+          <label><input type="checkbox" value="estoque" class="disponibilidade-checkbox"> Em estoque</label>
+          <label><input type="checkbox" value="encomenda" class="disponibilidade-checkbox"> Sob encomenda</label>
+        </div>
+      </div>
+
+      <div class="filtros-categorias">
+        <strong>Ordenar por:</strong>
+        <div class="ordenar-preco-container">
+          <select id="ordenar-preco">
+            <option value="">Selecione</option>
+            <option value="asc">Preço: menor ao maior</option>
+            <option value="desc">Preço: maior ao menor</option>
+            <option value="az">A - Z</option>
+            <option value="za">Z - A</option>
+            <option value="maisvendidos">Mais vendidos</option>
+            <option value="promocao">Promoção</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="btn-resetar-filtros" class="btn-resetar">Redefinir filtros</button>
+    </aside>
+
+    <!-- Área de produtos -->
+    <main class="produtos-area">
+      <div class="produtos-grid" id="produtos-grid">
+
+        <!-- Exemplo: produto com todos os atributos e botão -->
+        <div class="produto-card"
+             data-material="ouro"
+             data-corpeca="dourado"
+             data-corpedra="branco"
+             data-tamanho="medio"
+             data-colecao="classico"
+             data-promocao="promocao"
+             data-disponibilidade="estoque"
+             data-hipo="sim"
+             data-banho="ouro18k"
+             data-preco="59.90"
+             data-nome="Anel Dourado">
+
+             <!-- Produtos -->
+          <img src="../PagInicial/Imagens/Brinco/Brinco1.jpg" alt="Anel Dourado">
+          <p class="nome-produto">Anel Dourado</p>
+          <p class="preco-produto">R$ 59,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+        <div class="produto-card" data-categoria="anel" data-nome="Anel Dourado 2">
+          <img src="../PagInicial/Imagens/Brinco/Brinco2.jpg" alt="Anel 1">
+          <p class="nome-produto">Anel Dourado 2</p>
+          <p class="preco-produto">R$ 59,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+        <div class="produto-card" data-categoria="anel" data-nome="Anel Prata">
+          <img src="../PagInicial/Imagens/Brinco/Brinco3.jpg" alt="Anel 2">
+          <p class="nome-produto">Anel Prata</p>
+          <p class="preco-produto">R$ 49,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+        <div class="produto-card" data-categoria="anel" data-nome="Anel Prata 2">
+          <img src="../PagInicial/Imagens/Brinco/Brinco4.jpg" alt="Anel 3">
+          <p class="nome-produto">Anel Prata 2</p>
+          <p class="preco-produto">R$ 49,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+        <div class="produto-card" data-categoria="anel" data-nome="Anel Prata 3">
+          <img src="../PagInicial/Imagens/Brinco/Brinco5.jpg" alt="Anel 4">
+          <p class="nome-produto">Anel Prata 3</p>
+          <p class="preco-produto">R$ 49,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+        <div class="produto-card" data-categoria="anel" data-nome="Anel Prata 4">
+          <img src="../PagInicial/Imagens/Brinco/Brinco6.jpg" alt="Anel 5">
+          <p class="nome-produto">Anel Prata 4</p>
+          <p class="preco-produto">R$ 49,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+        <div class="produto-card" data-categoria="anel" data-nome="Anel Prata 5">
+          <img src="../PagInicial/Imagens/Brinco/Brinco7.jpg" alt="Anel 6">
+          <p class="nome-produto">Anel Prata 5</p>
+          <p class="preco-produto">R$ 49,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+        <div class="produto-card" data-categoria="anel" data-nome="Anel Prata 6">
+          <img src="../PagInicial/Imagens/Brinco/Brinco8.jpg" alt="Anel 7">
+          <p class="nome-produto">Anel Prata 6</p>
+          <p class="preco-produto">R$ 49,90</p>
+          <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Faixa separadora -->
+  <div class="faixa-separadora"><span></span></div>
+<!-- Fim da Faixa separadora -->
+
+  <!-- Rodape do site -->
+    <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Formas de Pagamento</h3>
+        <img src="/../Imagens/FormasPagamentoRodape.png" alt="Formas de pagamento" style="max-width:200px;">
+      </div>
+      <div class="footer-info">
+        <h3>Segurança</h3>
+        <img src="/../Imagens/SeguroGoogleRodape.png" alt="Site Seguro" style="max-width:80px;">
+        <p>Compra segura</p>
+      </div>
+      <div class="footer-info">
+        <h3>Contatos</h3>
+        <p>Email: <a href="mailto:donaflorsemijoiass@gmail.com">Donaflorsemijoiass@gmail.com <i class="fa-solid fa-envelope"></i></a></p>
+        <p>WhatsApp DonaFlor:<a href="https://wa.me/5531973355820?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido.">+55 (31) 97335-5820 <i class="fa-brands fa-whatsapp"></i></p></a>
+      </div>
+      <div class="footer-info">
+        <h3>Acompanhe o nosso Instagram</h3>
+        <a href="https://www.instagram.com/d.flor_semijoias/">d.flor_semijoias <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <p style="text-align:center; color:#bfa76a; margin-top:10px;">&copy; 2026 Dona Flor Semijoias</p>
+  </footer>
+  <!-- Fim do rodape -->
+
+  <!-- Scripts do site -->
+  <script>
+    // Menu do monstruario
+    document.querySelectorAll('.submenu > a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const submenu = this.parentElement;
+        submenu.classList.toggle('open');
+        document.querySelectorAll('.submenu').forEach(function (other) {
+          if (other !== submenu) other.classList.remove('open');
+        });
+      });
+    });
+
+    // Fecha o Menu se clicar fora
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.submenu')) {
+        document.querySelectorAll('.submenu').forEach(function (submenu) {
+          submenu.classList.remove('open');
+        });
+      }
+    });
+  </script>
+
+  <!-- Mantive seu arquivo de filtros externo se existir -->
+  <script src="../filtros.javascript"></script>
+
+  <script>
+  // FILTROS
+  
+  const busca = document.getElementById('busca');
+  const produtos = Array.from(document.querySelectorAll('.produto-card'));
+
+  function getCheckedValues(classe) {
+    return Array.from(document.querySelectorAll('.' + classe + ':checked')).map(cb => cb.value);
+  }
+
+  function filtrarProdutos() {
+    const textoBusca = (busca ? busca.value.toLowerCase() : '');
+    const materiais = getCheckedValues('material-checkbox');
+    const corpecas = getCheckedValues('corpeca-checkbox');
+    const corpedras = getCheckedValues('corpedra-checkbox');
+    const tamanhos = getCheckedValues('tamanho-checkbox');
+    const colecoes = getCheckedValues('colecao-checkbox');
+    const promocoes = getCheckedValues('promocao-checkbox');
+    const disponibilidades = getCheckedValues('disponibilidade-checkbox');
+    const hipos = getCheckedValues('hipo-checkbox');
+    const banhos = getCheckedValues('banho-checkbox');
+
+    produtos.forEach(produto => {
+      const nome = (produto.dataset.nome || produto.querySelector('.nome-produto')?.textContent || '').toLowerCase();
+      const mostra =
+        (materiais.length === 0 || materiais.includes(produto.dataset.material)) &&
+        (corpecas.length === 0 || corpecas.includes(produto.dataset.corpeca)) &&
+        (corpedras.length === 0 || corpedras.includes(produto.dataset.corpedra)) &&
+        (tamanhos.length === 0 || tamanhos.includes(produto.dataset.tamanho)) &&
+        (colecoes.length === 0 || colecoes.includes(produto.dataset.colecao)) &&
+        (promocoes.length === 0 || promocoes.includes(produto.dataset.promocao)) &&
+        (disponibilidades.length === 0 || disponibilidades.includes(produto.dataset.disponibilidade)) &&
+        (hipos.length === 0 || hipos.includes(produto.dataset.hipo)) &&
+        (banhos.length === 0 || banhos.includes(produto.dataset.banho)) &&
+        nome.includes(textoBusca);
+
+      produto.style.display = mostra ? "block" : "none";
+    });
+  }
+
+  // Eventos
+  document.querySelectorAll('.filtros-lateral input[type="checkbox"]').forEach(cb => cb.addEventListener('change', filtrarProdutos));
+  if (busca) busca.addEventListener('input', filtrarProdutos);
+  document.getElementById('btn-resetar-filtros').addEventListener('click', function() {
+    if (busca) busca.value = '';
+    document.querySelectorAll('.filtros-lateral input[type="checkbox"]').forEach(cb => cb.checked = false);
+    filtrarProdutos();
+  });
+
+  // Inicializa filtro
+  filtrarProdutos();
+  </script>
+
+  <script>
+  // =========================
+  // CARRINHO
+  // =========================
+
+  // Funções compartilhadas (repetir em todas as páginas de produtos)
+  function getCarrinho() {
+    return JSON.parse(localStorage.getItem('carrinho')) || [];
+  }
+
+  function salvarCarrinho(carrinho) {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  }
+
+  function atualizarContadorCarrinho() {
+    const carrinho = getCarrinho();
+    const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+    const contador = document.getElementById('carrinho-contador');
+    if (contador) {
+      contador.textContent = totalItens;
+      contador.style.display = totalItens > 0 ? 'inline-block' : 'none';
+    }
+  }
+
+  function adicionarAoCarrinho(nome, preco, img) {
+    let carrinho = getCarrinho();
+    const precoNum = parseFloat(preco.toString().replace(',', '.').replace('R$', '').trim()) || 0;
+    let imagem = img || '';
+
+    // Ajusta caminho da imagem para ser relativo à raiz (ex.: "Imagens/Aneis/anel1.jpg")
+    if (imagem.startsWith('../')) imagem = imagem.substring(3);
+    if (!imagem.startsWith('Imagens/') && !imagem.startsWith('PagInicial/')) {
+      imagem = 'Imagens/' + imagem.split('/').pop(); // Ajuste conforme necessário
+    }
+
+    let item = carrinho.find(i => i.nome === nome);
+    if (item) {
+      item.qtd += 1;
+    } else {
+      carrinho.push({
+        nome: nome,
+        preco: precoNum,
+        img: imagem,
+        qtd: 1
+      });
+    }
+
+    salvarCarrinho(carrinho);
+    atualizarContadorCarrinho();
+    alert(`${nome} adicionado ao carrinho!`); // Opcional: feedback ao usuário
+  }
+
+  // Event listeners para botões "Adicionar ao carrinho"
+  document.querySelectorAll('.btn-add-carrinho').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const card = this.closest('.produto-card');
+      if (!card) return;
+
+      const nome = card.querySelector('.nome-produto')?.textContent?.trim() || card.dataset.nome || 'Produto';
+      const precoText = card.querySelector('.preco-produto')?.textContent || card.dataset.preco || '0';
+      const img = card.querySelector('img')?.getAttribute('src') || '';
+
+      adicionarAoCarrinho(nome, precoText, img);
+    });
+  });
+
+  // Atualiza contador ao carregar
+  document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
+  </script>
+</body>
+</html>

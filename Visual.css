@@ -208,6 +208,10 @@ footer a {
   width: 300px;
   height: 270px; /* aumente para caber o preço */
   position: relative;
+  background: linear-gradient(135deg, #f5e6d3 0%, #d4bd93 50%, #bfa76a 100%);
+  border: 2px solid #bfa76a;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(191, 167, 106, 0.3);
 }
 
 .carousel-item {
@@ -217,6 +221,10 @@ footer a {
   width: 100%;
   height: 100%;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-item.active {
@@ -225,19 +233,34 @@ footer a {
 
 .carousel-item img {
   width: 100%;
-  max-height: 200px; /* ajuste para não ocupar todo o espaço */
+  max-height: 220px; /* ajuste para não ocupar todo o espaço */
   object-fit: contain;
+    box-shadow: 0 1px 4px rgba(191, 167, 106, 0.5);
+      background: linear-gradient(90deg, #d4bd93, #bfa76a);    
 }
 
 .preco {
   margin-top: 8px;
-  font-size: 18px;
-  color: #bfa76a;
+  font-size: 22px;
+  color: #7a5c1b;
   font-weight: bold;
-  background: #fffbe9;
-  padding: 4px 12px;
+  background: linear-gradient(90deg, #d4bd93, #bfa76a);
+  color: white;
+  padding: 3px 50px;
   border-radius: 8px;
-  box-shadow: 0 1px 4px #e5d7b6;
+  box-shadow: 0 1px 4px rgba(191, 167, 106, 0.5);
+  display: block;
+}
+.entre {
+  margin-top: 8px;
+  font-size: 22px;
+  color: #7a5c1b;
+  font-weight: bold;
+  background: linear-gradient(90deg, #d4bd93, #bfa76a);
+  color: white;
+  padding: 3px 50px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(191, 167, 106, 0.5);
   display: block;
 }
 .submenu-list {

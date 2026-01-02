@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
+  <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/a538f39a89238f9a9bb8fc68c1e4dbd6/script.js"></script> <!-- End cookieyes banner -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,20 +17,21 @@
 
 <body>
   <div class="top-icons">
-    <a href="pesquisa.html" class="Icones">
+    <a href="Menus/Pesquisa.html" class="Icones">
       <i class="fa-solid fa-magnifying-glass"></i>
     </a>
-    <a href="carrinho.html" class="Icones">
-      <i class="fas fa-shopping-cart"></i>
-    </a>
-    <a href="Login.html" class="Icones">
+<a href="Menus/Carrinho.html" class="Icones" style="position:relative;">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="carrinho-contador" style="position:absolute;top:-8px;right:-8px;background:#bfa76a;color:#fff;padding:2px 7px;border-radius:50%;font-size:12px;min-width:18px;text-align:center;display:none;">0</span>
+</a>
+    <a href="Menus/Login.html" class="Icones">
       <i class="fa-solid fa-lock"></i>
     </a>
   </div>
   <h1>
     <div class="h1-logo-container">
       <a href="index.html">
-      <img src="Imagenss/Logo.png" alt="Logo Dona Flor" class="logo">
+      <img src="Imagens/LogoSite.png" alt="Logo Dona Flor" class="logo">
       </a>
     </div>
   </h1>
@@ -38,20 +39,22 @@
   <p></p>
   <nav>
     <ul>
-      <li><a href="novidades.html">Novidades</a></li>
+      <li><a href="Menus/Novidades.html">Novidades</a></li>
       <li class="submenu">
-        <a href="Produtos.html">Monstruario</a>
+        <a href="#">Monstruario</a>
         <ul class="submenu-list">
-          <li><a href="Menus/Produtos/Aneis.html">Anéis</a></li>
-          <li><a href="Menus/Produtos/Brincos.html">Brincos</a></li>
-          <li><a href="Menus/Produtos/Colares.html">Colares</a></li>
-          <li><a href="Menus/Produtos/Pulseiras.html">Pulseiras</a></li>
+          <li><a href="Menus/SemiJoias/Aneis.html">Anéis</a></li>
+          <li><a href="Menus/SemiJoias/Brincos.html">Brincos</a></li>
+          <li><a href="Menus/SemiJoias/Colares.html">Colares</a></li>
+          <li><a href="Menus/SemiJoias/Pulseiras.html">Pulseiras</a></li>
+          <li><a href="Menus/SemiJoias/Conjunto.html">Conjuntos</a></li>
+
         </ul>
       </li>
-      <li><a href="Produtos/Promocoes/Promocoes.html">Promoções</a></li>
-      <li><a href="Produtos/Sobre/Sobre.html">Sobre nos</a></li>
-      <li><a href="Produtos/Duvida/Duvidas.html">Duvidas</a></li>
-      <li><a href="Produtos/Contato/Contato.html">Contatos</a></li>
+      <li><a href="Menus/Promocoes.html">Promoções</a></li>
+      <li><a href="Menus/Sobre.html">Sobre nos</a></li>
+      <li><a href="Menus/Duvidas.html">Duvidas</a></li>
+      <li><a href="Menus/Contato.html">Contatos</a></li>
     </ul>
   </nav>
     <div class="titulo">
@@ -60,22 +63,26 @@
       <div class="container">
     <div class="linha-carrossel">
   <div class="imagem-lateral esquerda">
-    <img src="Imagenss/Cuidado.jpeg" alt="info esquerda">
+    <img src="Imagens/LogoInicial1.jpeg" alt="info esquerda">
   </div>
   <div class="carousel-centralizada">
     <div class="carousel">
       <button class="carousel-btn prev">&#10094;</button>
       <div class="carousel-images">
         <div class="carousel-item">
-          <img src="Imagenss/Semii.jpeg" alt="Semijoia 2 Dona Flor">
+
+          <a href="Menus/SemiJoias/Brincos.html">
+          <img src="Imagens/Brincos/Brinco1.jpeg" alt="Aguarde"></a>
           <span class="preco">R$ 59,90</span>
         </div>
         <div class="carousel-item">
-          <img src="Imagenss/Semiii.jpeg" alt="Semijoia 3 Dona Flor">
+          <a href="Menus/SemiJoias/Brincos.html">
+          <img src="Imagens/Brincos/Brinco2.jpeg" alt="Aguarde"></a>
           <span class="preco">R$ 39,90</span>
         </div>
         <div class="carousel-item">
-          <img src="Imagenss/Semiiii.jpeg" alt="Semijoia 4 Dona Flor">
+          <a href="Menus/SemiJoias/Brincos.html">
+          <img src="Imagens/Brincos/Brinco3.jpeg" alt="Semijoia 4 Dona Flor"></a>
           <span class="preco">R$ 29,90</span>
         </div>
         <!-- Adicione mais itens conforme necessário -->
@@ -84,7 +91,7 @@
     </div>
   </div>
   <div class="imagem-lateral direita">
-    <img src="Imagenss/Cuidados.jpg" alt="info direita">
+    <img src="Imagens/LogoInicial2.jpg" alt="info direita">
   </div>
 </div>
   </div>
@@ -134,27 +141,27 @@
         <div class="instagram-row" id="instaRow">
 
             <a href="https://www.instagram.com/p/DRKwfmnj2QA/" target="_blank">
-                <img src="Instagramimg/InstaImg1.jpeg" class="insta-thumb">
+                <img src="InstagramImg/InstaImg1.jpeg" class="insta-thumb">
             </a>
 
             <a href="https://www.instagram.com/p/DRKx-PGj6-p/" target="_blank">
-                <img src="Instagramimg/InstaImg2.jpeg" class="insta-thumb">
+                <img src="InstagramImg/InstaImg2.jpeg" class="insta-thumb">
             </a>
 
             <a href="https://www.instagram.com/p/DRKx-PGj6-p/" target="_blank">
-                <img src="Instagramimg/InstaImg3.jpeg" class="insta-thumb">
+                <img src="InstagramImg/InstaImg3.jpeg" class="insta-thumb">
             </a>
 
             <a href="https://www.instagram.com/p/DRKx-PGj6-p/" target="_blank">
-                <img src="Instagramimg/InstaImg4.jpeg" class="insta-thumb">
+                <img src="InstagramImg/InstaImg4.jpeg" class="insta-thumb">
             </a>
 
             <a href="https://www.instagram.com/p/DRKx-PGj6-p/" target="_blank">
-                <img src="Instagramimg/InstaImg5.jpeg" class="insta-thumb">
+                <img src="InstagramImg/InstaImg5.jpeg" class="insta-thumb">
             </a>
 
             <a href="https://www.instagram.com/p/DRKx-PGj6-p/" target="_blank">
-                <img src="Instagramimg/InstaImg6.jpeg" class="insta-thumb">
+                <img src="InstagramImg/InstaImg6.jpeg" class="insta-thumb">
             </a>
             <!-- adicione quantas quiser -->
         </div>
@@ -168,25 +175,25 @@
     <div class="footer-container">
       <div class="footer-info">
         <h3>Formas de Pagamento</h3>
-        <img src="Imagenss/formapagamentos.png" alt="Formas de pagamento" style="max-width:150px;">
+        <img src="Imagens/FormasPagamentoRodape.png" alt="Formas de pagamento" style="max-width:200px;">
       </div>
       <div class="footer-info">
         <h3>Segurança</h3>
-        <img src="Imagenss/seguro.png" alt="Site Seguro" style="max-width:80px;">
+        <img src="Imagens/SeguroGoogleRodape.png" alt="Site Seguro" style="max-width:80px;">
         <p>Compra segura</p>
       </div>
       <div class="footer-info">
         <h3>Contatos</h3>
         <p>Email: <a href="mailto:donaflorsemijoiass@gmail.com">Donaflorsemijoiass@gmail.com <i class="fa-solid fa-envelope"></i></a></p>
-        <p>WhatsApp DonaFlor:<a href="https://wa.me/5531973355820?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido."><i class="fa-brands fa-whatsapp"></i></p></a>
+        <p>WhatsApp DonaFlor:<a href="https://wa.me/5531973355820?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido.">+55 (31) 97335-5820 <i class="fa-brands fa-whatsapp"></i></p></a>
       </div>
       <div class="footer-info">
         <h3>Acompanhe o nosso Instagram</h3>
-        <a href="https://www.instagram.com/d.flor_semijoias/"><i class="fa-brands fa-instagram"></i>
+        <a href="https://www.instagram.com/d.flor_semijoias/">d.flor_semijoias <i class="fa-brands fa-instagram"></i>
         </a>
       </div>
     </div>
-    <p style="text-align:center; color:#bfa76a; margin-top:10px;">&copy; 2025 Dona Flor Semijoias</p>
+    <p style="text-align:center; color:#bfa76a; margin-top:10px;">&copy; 2026 Dona Flor Semijoias</p>
   </footer>
   <script>
     const items = document.querySelectorAll('.carousel-item');
@@ -261,6 +268,28 @@
 
     window.addEventListener('resize', updateDepoimentosCarousel);
     updateDepoimentosCarousel();
+
+    // Funções compartilhadas do carrinho
+function getCarrinho() {
+  return JSON.parse(localStorage.getItem('carrinho')) || [];
+}
+
+function salvarCarrinho(carrinho) {
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+function atualizarContadorCarrinho() {
+  const carrinho = getCarrinho();
+  const totalItens = carrinho.reduce((soma, item) => soma + item.qtd, 0);
+  const contador = document.getElementById('carrinho-contador');
+  if (contador) {
+    contador.textContent = totalItens;
+    contador.style.display = totalItens > 0 ? 'inline-block' : 'none';
+  }
+}
+
+// Atualiza contador ao carregar a página
+document.addEventListener('DOMContentLoaded', atualizarContadorCarrinho);
   </script>
 <script>
     let instaIndex = 0;
